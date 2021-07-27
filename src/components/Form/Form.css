@@ -1,0 +1,147 @@
+.form {
+  width: 396px;
+  margin: 70px auto;
+}
+
+.form__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 40px 0;
+}
+
+.fields__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #a0a0a0;
+  margin: 20px 0 10px 0;
+}
+
+.fields__title_inactive {
+  position: fixed;
+  visibility: hidden;
+}
+
+.fields__input {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  width: 100%;
+  height: 46px;
+  background: #f4f4f4;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.fields__input:focus {
+  outline-color: #3456f3;
+}
+
+.fields__input_inactive {
+  position: fixed;
+  visibility: hidden;
+}
+
+.fields__input-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
+
+.fields__input_password {
+  color: #ee3465;
+}
+
+.fields__button {
+  width: 100%;
+  height: 46px;
+  margin: 90px 0 15px;
+  padding: 0;
+  background: #3456f3;
+  border-radius: 3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  border: none;
+}
+
+.fields__button:hover {
+  cursor: pointer;
+}
+
+.fields__button_login {
+  margin: 180px 0 15px;
+}
+
+.form__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.form__item {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form__item:nth-child(1) {
+  color: #a0a0a0;
+  margin: 0 6px 0 0;
+}
+
+.form__link {
+  text-decoration: none;
+  color: #3456f3;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    margin: 230px auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form {
+    width: 260px;
+    margin: 55px auto 30px;
+  }
+
+  .form__title {
+    margin: 50px 0 80px;
+    text-align: center;
+  }
+
+  .form__logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form__item {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .fields__button {
+    margin: 180px 0 15px;
+  }
+
+  .fields__button_login {
+    margin: 270px 0 15px;
+  }
+}

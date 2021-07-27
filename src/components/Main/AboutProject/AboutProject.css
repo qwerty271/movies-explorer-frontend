@@ -1,0 +1,137 @@
+.about-project {
+  margin: 110px 70px;
+}
+
+.about-project__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.about-project__line {
+  margin-top: 23px;
+  margin-bottom: 70px;
+}
+
+.about-project__description {
+  display: flex;
+  margin-bottom: 110px;
+}
+
+.about-project__description_contain:first-child {
+  margin-right: 40px;
+}
+
+.about-project__description_text-uppercase {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0 0 26px 0;
+}
+
+.about-project__description_text-lowercase {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+}
+
+.weeks {
+  display: grid;
+  grid-template-areas:
+    'weeks__indicator_short weeks__indicator_long'
+    'weeks__text weeks__text';
+  grid-template-columns: minmax(min-content, 20%) minmax(min-content, 80%);
+}
+
+.weeks__indicator_short {
+  background-color: #3456f3;
+}
+
+.weeks__indicator_long {
+  background-color: #f2f2f2;
+}
+
+.weeks__title {
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 9px 0;
+}
+
+.weeks__title_short {
+  color: #ffffff;
+}
+
+.weeks__title_long {
+  color: #000000;
+}
+
+.weeks__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+  margin: 14px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 90px 50px;
+  }
+
+  .weeks {
+    grid-template-columns: minmax(min-content, 21%) minmax(min-content, 79%);
+  }
+
+  .about-project__description {
+    margin-bottom: 93px;
+  }
+
+  .about-project__description_contain:first-child {
+    margin-right: 30px;
+  }
+
+  .about-project__description_text-uppercase {
+    margin: 0 0 22px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .weeks {
+    grid-template-columns: minmax(min-content, 35%) minmax(min-content, 65%);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-project {
+    margin: 70px 18px;
+  }
+
+  .about-project__description {
+    flex-direction: column;
+    margin-bottom: 93px;
+  }
+
+  .about-project__description_contain:first-child {
+    margin-right: 0;
+    margin-bottom: 56px;
+  }
+
+  .about-project__description_text-uppercase {
+    margin: 0 0 16px 0;
+  }
+}

@@ -35,8 +35,7 @@
   margin: 0;
 }
 
-.movies-card__favorites {
-  background-image: url(../../../images/favorites_off.svg);
+.movies-card__options {
   width: 30px;
   height: 30px;
   border: 0;
@@ -44,18 +43,26 @@
   border-radius: 36px;
 }
 
-.movies-card__favorites_active {
-  background-image: url(../../../images/favorites_on.svg);
+.movies-card__options:hover {
+  cursor: pointer;
 }
 
-.movies-card__favorites:hover {
-  cursor: pointer;
+.movies-card__favorites {
+  background-image: url(../../../images/favorites_off.svg);
+}
+
+.movies-card__favorites_active {
+  background-image: url(../../../images/favorites_on.svg);
 }
 
 .movies-card__preview {
   box-sizing: border-box;
   width: 100%;
   object-fit: cover;
+}
+
+.movies-card__delete {
+  background-image: url(../../../images/movies_delete.svg);
 }
 
 @media screen and (max-width: 768px) {

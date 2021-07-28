@@ -14,6 +14,7 @@
   width: 929px;
   border-radius: 50px;
 }
+
 .search-form__input {
   width: 100%;
   height: 100%;
@@ -39,7 +40,7 @@
 }
 
 .search-form__input:focus {
-  outline: none;
+  outline-color: #3456f3;
 }
 
 .search-form__text {

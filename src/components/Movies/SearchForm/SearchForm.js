@@ -4,7 +4,11 @@ function SearchForm() {
   return (
     <section className='search-form'>
       <form className='search-form__field'>
-        <input className='search-form__input' placeholder='Фильм'></input>
+        <input
+          className='search-form__input'
+          placeholder='Фильм'
+          required
+        ></input>
         <button className='search-form__button' type='submit'></button>
       </form>
       <div className='search-form__contain'>

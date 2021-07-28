@@ -9,7 +9,7 @@ function SavedMovies() {
     <section className='saved-movies'>
       <Header type={2} />
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList button={'saved'} />
       <Footer />
     </section>
   );

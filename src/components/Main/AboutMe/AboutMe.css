@@ -118,9 +118,14 @@
     margin: 90px 50px;
   }
 
+  .about-me__name {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
   .about-me__image {
-    width: 150px;
-    height: 167px;
+    width: 180px;
+    height: 207px;
   }
 
   .about-me__contain_text {

@@ -2,12 +2,15 @@ import React from 'react';
 import './MoviesCard.css';
 import cardPreview from '../../../images/card_preview.png';
 
-function MoviesCard() {
+function MoviesCard(props) {
   const [favoritesCheck, setFavoritesCheck] = React.useState(false);
+  const changeButton = props.button;
 
   function change() {
     setFavoritesCheck(favoritesCheck ? false : true);
   }
+
+  function deleteCard() {}
 
   return (
     <div className='movies-card'>
@@ -21,10 +24,12 @@ function MoviesCard() {
           </li>
         </ul>
         <button
-          className={`movies-card__favorites ${
-            favoritesCheck ? 'movies-card__favorites_active' : ''
-          }`}
-          onClick={change}
+          className={` movies-card__options ${
+            favoritesCheck && changeButton === 'search'
+              ? 'movies-card__favorites_active'
+              : 'movies-card__favorites'
+          } ${changeButton === 'saved' ? 'movies-card__delete' : ''}`}
+          onClick={changeButton === 'search' ? change : deleteCard}
         />
       </div>
       <img className='movies-card__preview' alt='Превью' src={cardPreview} />

@@ -9,7 +9,7 @@ function Movies() {
     <React.Fragment>
       <Header type={2} />
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList button={'search'} />
       <Footer />
     </React.Fragment>
   );

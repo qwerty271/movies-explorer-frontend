@@ -20,16 +20,7 @@
   margin: 220px 0 70px;
 }
 
-.profile__item:hover {
-  cursor: pointer;
-}
-
 .profile__item:nth-of-type(1) {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 16px;
-  color: #000000;
   margin: 0 0 16px 0;
 }
 
@@ -43,8 +34,39 @@
   margin: 0;
 }
 
+.profile__item:nth-of-type(2):hover {
+  cursor: pointer;
+}
+
+.profile__button {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+}
+
+.profile__button:hover {
+  cursor: pointer;
+}
+
+.profile__button_inactive {
+  color: #ee3465;
+}
+
 .profile__contain {
   width: 410px;
+}
+
+.profile__span-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
 }
 
 .profile__header {
@@ -80,6 +102,32 @@
 
 .profile__line {
   margin: 15px 0;
+}
+
+.popup {
+  position: fixed;
+  visibility: hidden;
+  background-color: greenyellow;
+  bottom: 50%;
+  border-radius: 15px;
+  opacity: 0;
+  transition: visibility 1s ease-in-out, opacity 1s linear;
+}
+
+.popup__active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.popup__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #000000;
+  margin: 20px;
 }
 
 @media screen and (max-width: 767px) {

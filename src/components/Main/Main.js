@@ -7,10 +7,10 @@ import AboutMe from '../Main/AboutMe/AboutMe';
 import Portfolio from '../Main/Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
-function Main() {
+function Main(props) {
   return (
     <React.Fragment>
-      <Promo />
+      <Promo type={props.type} />
       <NavTab />
       <AboutProject />
       <Tech />

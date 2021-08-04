@@ -48,7 +48,7 @@
   visibility: hidden;
 }
 
-.fields__input-error {
+.fields__span-error {
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -56,7 +56,7 @@
   color: #ee3465;
 }
 
-.fields__input_password {
+.fields__input-error {
   color: #ee3465;
 }
 
@@ -73,6 +73,11 @@
   line-height: 17px;
   color: #ffffff;
   border: none;
+}
+
+.fields__button_inactive {
+  background: #f4f4f4;
+  color: red;
 }
 
 .fields__button:hover {

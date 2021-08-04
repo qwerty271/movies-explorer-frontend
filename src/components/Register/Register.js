@@ -1,8 +1,9 @@
 import React from 'react';
 import './Register.css';
 import Form from '../Form/Form';
+import Preloader from '../Movies/Preloader/Preloader';
 
-function Register() {
+function Register(props) {
   return (
     <section className='register'>
       <Form
@@ -12,7 +13,9 @@ function Register() {
         register={'Уже зарегистрированы?'}
         sign={'Войти'}
         route={'signin'}
+        submit={props.userRegister}
       />
+      <Preloader state={props.statePreloader} />
     </section>
   );
 }

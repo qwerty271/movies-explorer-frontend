@@ -38,7 +38,7 @@ function Header(props) {
       </Link>
       <div
         className={` ${
-          navType === 1 ? 'header__navigation_active' : 'header__navigation'
+          !navType ? 'header__navigation_active' : 'header__navigation'
         }`}
       >
         <Link to='/signup' className='header__button header__button_register'>
@@ -50,7 +50,7 @@ function Header(props) {
       </div>
       <div
         className={` ${
-          navType === 2 && visible > 769
+          navType && visible > 769
             ? 'header__navigation_active'
             : 'header__navigation'
         } `}
@@ -68,7 +68,7 @@ function Header(props) {
       </div>
       <img
         className={` ${
-          navType === 2 && visible < 769 && !menuVisible
+          navType && visible < 769 && !menuVisible
             ? 'header__burger_active'
             : 'header__burger'
         } `}

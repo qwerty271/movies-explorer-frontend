@@ -1,0 +1,89 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 75px 0 125px;
+}
+
+.profile__list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin: 220px 0 70px;
+}
+
+.profile__item:hover {
+  cursor: pointer;
+}
+
+.profile__item:nth-of-type(1) {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.profile__item:nth-of-type(2) {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #ee3465;
+  margin: 0;
+}
+
+.profile__contain {
+  width: 410px;
+}
+
+.profile__header {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000000;
+  margin: auto 0;
+}
+
+.profile__contain_data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__input {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000000;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  text-align: end;
+  width: 360px;
+}
+
+.profile__input:focus {
+  outline: none;
+}
+
+.profile__line {
+  margin: 15px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__contain {
+    width: 260px;
+  }
+}

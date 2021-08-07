@@ -85,44 +85,42 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <React.Fragment>
-        <div className='page'>
-          <Switch>
-            <Route exact path='/'>
-              <Main type={loggedIn} />
-            </Route>
-            <Route path='/signin'>
-              <Login userLogin={userLogin} statePreloader={statePreloader} />
-            </Route>
-            <Route path='/signup'>
-              <Register
-                userRegister={userRegister}
-                statePreloader={statePreloader}
-              />
-            </Route>
-            <ProtectedRoute
-              path='/profile'
-              type={loggedIn}
-              component={Profile}
-              userData={currentUser}
-              loggedIn={setLoggedIn}
-              submit={replaceUser}
-              popup={popup}
+      <div className='page'>
+        <Switch>
+          <Route exact path='/'>
+            <Main type={loggedIn} />
+          </Route>
+          <Route path='/signin'>
+            <Login userLogin={userLogin} statePreloader={statePreloader} />
+          </Route>
+          <Route path='/signup'>
+            <Register
+              userRegister={userRegister}
               statePreloader={statePreloader}
             />
-            <ProtectedRoute path='/movies' type={loggedIn} component={Movies} />
-            <ProtectedRoute
-              path='/saved-movies'
-              type={loggedIn}
-              component={SavedMovies}
-            />
+          </Route>
+          <ProtectedRoute
+            path='/profile'
+            type={loggedIn}
+            component={Profile}
+            userData={currentUser}
+            loggedIn={setLoggedIn}
+            submit={replaceUser}
+            popup={popup}
+            statePreloader={statePreloader}
+          />
+          <ProtectedRoute path='/movies' type={loggedIn} component={Movies} />
+          <ProtectedRoute
+            path='/saved-movies'
+            type={loggedIn}
+            component={SavedMovies}
+          />
 
-            <Route path='*'>
-              <NotFound />
-            </Route>
-          </Switch>
-        </div>
-      </React.Fragment>
+          <Route path='*'>
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
     </CurrentUserContext.Provider>
   );
 }

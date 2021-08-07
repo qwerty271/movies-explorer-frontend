@@ -11,12 +11,15 @@ function Profile(props) {
   const userData = React.useContext(CurrentUserContext);
   const history = useHistory();
 
+  React.useEffect(() => {});
+
   function logout() {
     api
       .logout()
       .then((res) => {
         props.loggedIn(false);
         history.push('/');
+        localStorage.clear();
         return res;
       })
       .catch((err) => {

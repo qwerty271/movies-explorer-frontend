@@ -27,7 +27,13 @@
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
-  text-decoration: none;
+  padding: 0;
+  border: 0;
+  background-color: unset;
+}
+
+.not-found__link:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {

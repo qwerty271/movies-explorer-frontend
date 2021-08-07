@@ -143,6 +143,14 @@ function Form(props) {
                 (errors.password && touched.password && errors.password)
                   ? 'fields__button_inactive'
                   : ''
+              } ${
+                props.route === 'signin'
+                  ? touched.name && touched.email && touched.password
+                    ? ''
+                    : 'fields__button_inactive'
+                  : touched.email && touched.password
+                  ? ''
+                  : 'fields__button_inactive'
               }`}
               type='submit'
               disabled={`${

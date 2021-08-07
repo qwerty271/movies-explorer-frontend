@@ -6,6 +6,7 @@ import MoviesCardList from './MoviesCardList/MoviesCardList.js';
 import { moviesApi } from '../../utils/MoviesApi.js';
 import Preloader from './Preloader/Preloader.js';
 import { searchFilter, baseFilter } from '../DataFilter/DataFilter';
+import { api } from '../../utils/MainApi';
 
 function Movies(props) {
   const [dataFilms, setDataFilms] = React.useState();
@@ -14,6 +15,19 @@ function Movies(props) {
   const [statePreloader, setStatePreloader] = React.useState(false);
   const [filteredArray, setFilteredArray] = React.useState();
   const [renderedArray, setRenderedArray] = React.useState();
+  const [savedMovies, setSavedMovies] = React.useState();
+
+  React.useEffect(() => {
+    if (!savedMovies) {
+      api
+        .getMovies()
+        .then((movies) => {
+          setSavedMovies(movies);
+          localStorage.setItem('savedStorage', JSON.stringify(movies));
+        })
+        .catch((err) => console.log(err));
+    }
+  });
 
   function getBeatfilmMovies(ref, check) {
     if (!dataFilms) {
@@ -24,6 +38,12 @@ function Movies(props) {
           setDataFilms(data);
           setDataInput(ref);
           setFilteredArray(searchFilter(ref, data, check));
+          localStorage.setItem(
+            'moviesStorage',
+            JSON.stringify(searchFilter(ref, data, check))
+          );
+          localStorage.setItem('inputStorage', JSON.stringify(ref));
+          localStorage.setItem('checkStorage', JSON.stringify(check));
           setRenderedArray(baseFilter(searchFilter(ref, data, check)));
           setStatePreloader(false);
         })
@@ -31,7 +51,22 @@ function Movies(props) {
     } else if (dataFilms) {
       setDataInput(ref);
       setFilteredArray(searchFilter(ref, dataFilms, check));
+      localStorage.setItem(
+        'moviesStorage',
+        JSON.stringify(searchFilter(ref, dataFilms, check))
+      );
+      localStorage.setItem('inputStorage', JSON.stringify(ref));
+      localStorage.setItem('checkStorage', JSON.stringify(check));
       setRenderedArray(baseFilter(searchFilter(ref, dataFilms, check)));
+    }
+    if (!savedMovies) {
+      api
+        .getMovies()
+        .then((movies) => {
+          setSavedMovies(movies);
+          localStorage.setItem('savedStorage', JSON.stringify(movies));
+        })
+        .catch((err) => console.log(err));
     }
     setCheck(check);
   }
@@ -44,7 +79,8 @@ function Movies(props) {
         button={'search'}
         dataFilms={dataFilms}
         dataInput={dataInput}
-        check={setCheck}
+        check={check}
+        setCheck={setCheck}
         filteredArray={filteredArray}
         renderedArray={renderedArray}
         setFilteredArray={setFilteredArray}
@@ -60,6 +96,12 @@ function Movies(props) {
         renderedArray={renderedArray}
         setFilteredArray={setFilteredArray}
         setRenderedArray={setRenderedArray}
+        setDataInput={setDataInput}
+        setCheck={setCheck}
+        savedMoviesFull={savedMovies}
+        setSavedMovies={setSavedMovies}
+        setDataFilms={setDataFilms}
+        page={'movies'}
       />
       <Footer />
       <Preloader state={statePreloader} />

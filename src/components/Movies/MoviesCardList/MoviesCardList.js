@@ -16,7 +16,24 @@ function MoviesCardList(props) {
       searchFilter(props.dataInput, props.dataFilms, props.check);
       baseFilter(props.filteredArray);
     }
-  }, [props.check, props]);
+    if (
+      !props.filteredArray &&
+      !props.renderedArray &&
+      props.page === 'movies' &&
+      localStorage.getItem('moviesStorage')
+    ) {
+      if (JSON.parse(localStorage.getItem('moviesStorage')).length !== 0) {
+        props.setRenderedArray(
+          baseFilter(JSON.parse(localStorage.getItem('moviesStorage')))
+        );
+        props.setFilteredArray(
+          JSON.parse(localStorage.getItem('moviesStorage'))
+        );
+        props.setDataInput(JSON.parse(localStorage.getItem('inputStorage')));
+        props.setCheck(JSON.parse(localStorage.getItem('checkStorage')));
+      }
+    }
+  });
 
   function more() {
     if (props.filteredArray.length !== props.renderedArray.length) {
@@ -30,6 +47,23 @@ function MoviesCardList(props) {
 
   return (
     <section className='card-list'>
+      <p
+        className={`card-list__notice ${
+          props.filteredArray
+            ? props.filteredArray.length === 0
+              ? 'card-list__notice_active'
+              : ''
+            : ''
+        } ${
+          props.getedFilms
+            ? props.getedFilms.length === 0
+              ? 'card-list__notice_active'
+              : ''
+            : ''
+        }`}
+      >
+        Ничего не найдено
+      </p>
       <div className='card-list__contain' id={'contain'}>
         {props.renderedArray
           ? props.renderedArray.map((card) => {
@@ -51,6 +85,11 @@ function MoviesCardList(props) {
                     card.image.formats.thumbnail.url
                   }
                   nameEN={card.nameEN}
+                  savedMoviesFull={
+                    !props.dataFilms && localStorage.getItem('savedStorage')
+                      ? JSON.parse(localStorage.getItem('savedStorage'))
+                      : props.savedMoviesFull
+                  }
                 />
               );
             })
@@ -73,6 +112,7 @@ function MoviesCardList(props) {
                     description={movie.description}
                     thumbnail={movie.thumbnail.url}
                     nameEN={movie.nameEN}
+                    savedMoviesFull={props.savedMoviesFull}
                   />
                 );
               } else {
@@ -91,7 +131,8 @@ function MoviesCardList(props) {
               : ''
             : ''
         }
-        ${!props.renderedArray ? 'card-list__more_inactive' : ''}`}
+        ${!props.renderedArray ? 'card-list__more_inactive' : ''} 
+        `}
         onClick={more}
       >
         Ещё

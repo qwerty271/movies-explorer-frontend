@@ -5,30 +5,26 @@ import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
 
 function MoviesCard(props) {
   const [favoritesCheck, setFavoritesCheck] = React.useState(false);
+  const [savedMovies, setSavedMovies] = React.useState(props.savedMoviesFull);
   const [id, setId] = React.useState();
   const [hidden, setHidden] = React.useState(true);
   const changeButton = props.button;
   const userData = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    api
-      .getMovies()
-      .then((movies) => {
-        matched(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (savedMovies) {
+      matched();
+    }
   });
 
-  function matched(movies) {
-    for (let i = 0; i < movies.length; i++) {
+  function matched() {
+    for (let i = 0; i < savedMovies.length; i++) {
       if (
-        movies[i].movieId === props.movieId &&
-        userData._id === movies[i].owner
+        savedMovies[i].movieId === props.movieId &&
+        userData._id === savedMovies[i].owner
       ) {
         setFavoritesCheck(true);
-        setId(movies[i]._id);
+        setId(savedMovies[i]._id);
         break;
       }
     }
@@ -51,7 +47,13 @@ function MoviesCard(props) {
           props.nameEN
         )
         .then((res) => {
-          setFavoritesCheck(true);
+          api
+            .getMovies()
+            .then((movies) => {
+              setSavedMovies(movies);
+              setFavoritesCheck(true);
+            })
+            .catch((err) => console.log(err));
           return res;
         })
         .catch((err) => {
@@ -61,7 +63,13 @@ function MoviesCard(props) {
       api
         .deleteMovie(id)
         .then((res) => {
-          setFavoritesCheck(false);
+          api
+            .getMovies()
+            .then((movies) => {
+              setSavedMovies(movies);
+              setFavoritesCheck(false);
+            })
+            .catch((err) => console.log(err));
           return res;
         })
         .catch((err) => {

@@ -1,38 +1,62 @@
 import React from 'react';
 import './SearchForm.css';
-import { searchFilter, baseFilter } from '../../DataFilter/DataFilter';
+import {
+  searchFilter,
+  baseFilter,
+  shortFilter,
+} from '../../DataFilter/DataFilter';
 
 function SearchForm(props) {
   const filmRef = React.useRef();
-  const [check, setCheck] = React.useState(false);
 
   function changeCheck() {
-    check === true ? setCheck(false) : setCheck(true);
     if (props.type === 'movies') {
-      if (props.filteredArray) {
-        props.setFilteredArray(
-          searchFilter(props.dataInput, props.dataFilms, !check)
-        );
+      props.check === true ? props.setCheck(false) : props.setCheck(true);
+      if (!props.dataFilms && localStorage.getItem('moviesStorage')) {
         props.setRenderedArray(
-          baseFilter(searchFilter(props.dataInput, props.dataFilms, !check))
+          baseFilter(
+            shortFilter(
+              JSON.parse(localStorage.getItem('moviesStorage')),
+              !props.check
+            )
+          )
         );
-      } else if (props.renderArray) {
         props.setFilteredArray(
-          searchFilter(props.dataInput, props.dataFilms, !check)
+          searchFilter(
+            props.dataInput,
+            JSON.parse(localStorage.getItem('moviesStorage')),
+            !props.check
+          )
         );
-        props.setRenderedArray(
-          baseFilter(searchFilter(props.dataInput, props.dataFilms, check))
-        );
+      } else {
+        if (props.filteredArray) {
+          props.setFilteredArray(
+            searchFilter(props.dataInput, props.dataFilms, !props.check)
+          );
+          props.setRenderedArray(
+            baseFilter(
+              searchFilter(props.dataInput, props.dataFilms, !props.check)
+            )
+          );
+        } else if (props.renderArray) {
+          props.setFilteredArray(
+            searchFilter(props.dataInput, props.dataFilms, !props.check)
+          );
+          props.setRenderedArray(
+            baseFilter(
+              searchFilter(props.dataInput, props.dataFilms, props.check)
+            )
+          );
+        }
       }
     } else if (props.type === 'savedMovies') {
       props.check === true ? props.setCheck(false) : props.setCheck(true);
-      props.setshortFilms(searchFilter(' ', props.savedMovies, !check));
     }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.submit(filmRef.current.value, check);
+    props.submit(filmRef.current.value, props.check);
   }
 
   return (
@@ -42,6 +66,7 @@ function SearchForm(props) {
           className='search-form__input'
           placeholder='Фильм'
           ref={filmRef}
+          // value={!props.dataFilms ? props.dataInput : ''}
           required
         ></input>
         <button className='search-form__button' type='submit'></button>
@@ -54,6 +79,8 @@ function SearchForm(props) {
             type='checkbox'
             id='checkbox'
             onClick={changeCheck}
+            checked={props.check ? true : false}
+            readOnly
           />
           <span className='slider round'></span>
         </label>

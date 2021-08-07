@@ -5,9 +5,22 @@ export function searchFilter(dataInput, dataArray, shortFilm) {
     for (let i = 0; i < dataArray.length; i++) {
       if (
         dataArray[i].nameRU.toLowerCase().indexOf(dataInput.toLowerCase()) >
-          0 &&
+          -1 &&
         (shortFilm ? dataArray[i].duration <= 40 : true)
       ) {
+        filteredArray.push(dataArray[i]);
+      }
+    }
+  }
+  return filteredArray;
+}
+
+export function shortFilter(dataArray, shortFilm) {
+  let filteredArray = [];
+
+  if (dataArray !== undefined) {
+    for (let i = 0; i < dataArray.length; i++) {
+      if (shortFilm ? dataArray[i].duration <= 40 : true) {
         filteredArray.push(dataArray[i]);
       }
     }

@@ -1,7 +1,11 @@
 import './Preloader.css';
 
-function Preloader() {
-  return <section className='preloader' />;
+function Preloader(props) {
+  return (
+    <section
+      className={`preloader ${props.state ? 'preloader__active' : ''}`}
+    />
+  );
 }
 
 export default Preloader;

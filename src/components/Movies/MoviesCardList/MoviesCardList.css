@@ -5,6 +5,23 @@
   flex-direction: column;
 }
 
+.card-list__notice {
+  position: fixed;
+  visibility: hidden;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: red;
+  text-align: center;
+  margin: 0;
+}
+
+.card-list__notice_active {
+  position: unset;
+  visibility: visible;
+}
+
 .card-list__contain {
   display: grid;
   grid-auto-flow: row;
@@ -33,6 +50,11 @@
 
 .card-list__more:hover {
   cursor: pointer;
+}
+
+.card-list__more_inactive {
+  position: fixed;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 1279px) {
